@@ -1,0 +1,44 @@
+$cta-card-padding-top: 5rem;
+
+.cta-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: $cta-card-padding-top;
+  padding-bottom: 1.875rem;
+  align-items: baseline;
+
+  @include medium {
+    padding: 3.6875rem 2.5rem;
+  }
+
+  > * {
+    position: relative;
+  }
+
+  span {
+    padding-top: 0.625rem;
+    padding-bottom: 1.5625rem;
+    @include label_4;
+  }
+}
+
+.cta-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.9375rem;
+  @include medium {
+    flex-wrap: wrap;
+  }
+  .button {
+    &:not(:only-child) {
+      flex: 1;
+    }
+  }
+  button {
+    padding: 0 1.25rem;
+    align-items: center;
+  }
+}

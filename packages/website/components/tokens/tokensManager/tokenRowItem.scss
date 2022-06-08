@@ -1,0 +1,75 @@
+$base-row-width: 64rem;
+$date-name: calculateWidthPercentage(18.5rem, $base-row-width);
+$date-id: calculateWidthPercentage(41.125rem, $base-row-width);
+$date-copy: calculateWidthPercentage(3.625rem, $base-row-width);
+$date-delete: auto;
+
+.tokens-manager-row {
+  @include fontSize_Tiny;
+  display: grid;
+  position: relative;
+  padding: 0.375rem 1.75rem 0.375rem 0;
+  grid-template-columns: $date-name $date-id $date-copy $date-delete;
+  border-bottom: 0.078125rem solid rgba($white, 0.05);
+
+  @include medium {
+    @include border_Background_Waterloo_White;
+    grid-template-columns: auto;
+    border-bottom: 0;
+    padding: 0;
+    margin-bottom: 1.25rem;
+  }
+
+  > span {
+    @include medium {
+      @include leading_Tiny;
+      padding: 1.0625rem 5rem 1.0625rem 1.71875rem;
+      justify-content: flex-start;
+      border-bottom: 0.078125rem solid rgba(white, 0.05);
+      .file-row-label {
+        @include fontWeight_Semibold;
+        padding-bottom: 0.3125rem;
+        width: 5.625rem;
+        flex-shrink: 0;
+        display: inline-block;
+      }
+    }
+  }
+
+  &.tokens-manager-row-header {
+    padding-bottom: 0;
+    padding-left: 1.40625rem;
+    @include fontWeight_Semibold;
+    @include medium {
+      display: none;
+    }
+  }
+}
+
+.token-copy,
+.token-delete {
+  > * {
+    position: relative;
+    cursor: pointer;
+  }
+  @include medium {
+    position: absolute;
+    right: 1.25rem;
+  }
+  svg {
+    @include hoverSvg;
+  }
+}
+
+.token-copy {
+  display: flex;
+  @include medium {
+    bottom: 1.25rem;
+  }
+}
+
+.token-delete {
+  @include medium {
+    top: 1.25rem;
+  }
+}

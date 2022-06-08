@@ -1,0 +1,46 @@
+.login-container {
+  .section {
+    svg {
+      margin-right: 0.875rem;
+    }
+    &-email {
+      flex-direction: column;
+      gap: 1.5625rem;
+    }
+    &-github {
+      @include hoverInput;
+    }
+    .button {
+      width: 10.75rem;
+      height: 2.75rem;
+      button {
+        min-height: 1.875rem;
+      }
+    }
+  }
+}
+
+.login-content {
+  position: relative;
+  margin: auto;
+  max-width: 24.6875rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 0.3125rem;
+}
+
+.login-email {
+  @include border_Background_Waterloo_White;
+  padding: 1.25rem 2.5rem;
+  width: 100%;
+  border-radius: 0;
+  @include hoverInput;
+  &::placeholder {
+    color: $white;
+  }
+  &.error {
+    border-color: $cerise;
+    transition: border-color 250ms;
+  }
+}

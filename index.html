@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with Ollie landing page.">
+    <meta name="author" content="Devcrud">
+    <title>Ipfs Cloud</title>
+
+    <!-- font icons -->
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+    
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="assets/vendors/owl-carousel/css/owl.carousel.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel/css/owl.theme.default.css">
+
+  
+	<link rel="stylesheet" href="assets/css/ollie.css">
+
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+    <nav id="scrollspy" class="navbar navbar-light bg-light navbar-expand-lg fixed-top" data-spy="affix" data-offset-top="20">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="assets/imgs/brand.svg" alt="" class="brand-img"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#upload">Storage</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#retrieve">Access</a>
+                    </li>
+                   
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <header id="home" class="header">
+        <div class="overlay"></div>
+
+        <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">  
+            <div class="container">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h1 class="carousel-title">Decenteralizied <br> Storage System</h1>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h1 class="carousel-title">Decenteralizied <br> Storage System Using Blockchain</h1>
+                          </div>
+                    </div>
+
+                </div>
+                <a class="nav-link"  href="#upload"><button class="btn btn-primary btn-rounded" >Get Started </button></a>
+
+            </div>        
+        </div>
+
+        <div class="infos container mb-4 mb-md-2">
+            <div class="title">
+                <h6 class="subtitle font-weight-normal">Easiest way to</h6>
+                <h5>Store data</h5>
+                <p class="font-small">In Decenteralizied Web</p>
+            </div>
+            <div class="socials text-right">
+                <div class="row justify-content-between">
+                    <div class="col">
+                        <a class="d-block subtitle"><i class="ti-microphone pr-2"></i> 730 6096 961</a>
+                        <a class="d-block subtitle"><i class="ti-email pr-2"></i> https://github.com/Jacob-alwin</a>
+                    </div>
+                    <div class="col">
+                        <h6 class="subtitle font-weight-normal mb-2">Social Media</h6>
+                        <div class="social-links">
+                            <a href="javascript:void(0)" class="link pr-1"><i class="ti-facebook"></i></a>
+                            <a href="javascript:void(0)" class="link pr-1"><i class="ti-twitter-alt"></i></a>
+                            <a href="javascript:void(0)" class="link pr-1"><i class="ti-google"></i></a>
+                            <a href="javascript:void(0)" class="link pr-1"><i class="ti-pinterest-alt"></i></a>
+                            <a href="javascript:void(0)" class="link pr-1"><i class="ti-instagram"></i></a>
+                            <a href="javascript:void(0)" class="link pr-1"><i class="ti-rss"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="section" id="upload">
+
+        <div class="container">
+
+            <div class="row align-items-center mr-auto">
+                <div class="col-md-4">
+                    <h6 class="xs-font mb-0">Decenteralizied Storage</h6>
+                    <h3 class="section-title">Uploading file</h3>
+                    <p>Enter the CID where the project should store the data. Upload the file which is neeed to be uploaded.</p>
+
+                    <a href="javascript:void(0)">Default CID</a>
+                </div>
+                <div class="col-sm-6 col-md-6 p-2 ml-auto">
+                    <div class="widget">
+                        <form id="upload-form">
+                            <label class="m-3 ms-3" for="token">Paste your web3.storage API token here</label>
+                            <input class="m-3 ms-3"  type="password" id="token" required />
+                            
+                            <input type="file" class="m-3 ms-3 btn-dark" id="filepicker" name="fileList" multiple required />
+                          
+                    </div>
+                    <div class="widget">
+                        <input type="submit"  style="border-radius: 4px;" class="m-2 btn btn-outline-dark"  value="Submit" id="submit" />
+                    </form>
+                        
+                    </div>
+                </div>
+             
+             </div>
+        </div>
+    </section>
+
+    <section id="retrieve" class="section pb-0">
+
+        <div class="container">
+            <h6 class="xs-font mb-0">Decenteralizied Storage</h6>
+            <h3 class="section-title mb-5">Retrieve File</h3>
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md-8 col-lg-7">
+
+                    <div id="output"></div>
+    <script type="module">
+      import { Web3Storage } from 'https://cdn.jsdelivr.net/npm/web3.storage/dist/bundle.esm.min.js'
+
+      const form = document.querySelector('#upload-form')
+      const filepicker = document.querySelector('#filepicker')
+      const tokenInput = document.querySelector('#token')
+      const output = document.querySelector('#output')
+
+      showMessage('> ⁂ waiting for form submission...')
+
+      form.addEventListener('submit', async function (event) {
+        // don't reload the page!
+        event.preventDefault()
+
+        showMessage('> 📦 creating web3.storage client')
+        const token = tokenInput.value
+        const client = new Web3Storage({ token })
+
+        showMessage('> 🤖 chunking and hashing the files (in your browser!) to calculate the Content ID')
+        const files = filepicker.files
+        const cid = await client.put(files, {
+          onRootCidReady: (localCid) => {
+            showMessage(`> 🔑 locally calculated Content ID: ${localCid} `)
+            showMessage('> 📡 sending files to web3.storage ')
+          },
+          onStoredChunk: (bytes) => showMessage(`> 🛰 sent ${bytes.toLocaleString()} bytes to web3.storage`)
+        })
+        showMessage(`> ✅ web3.storage now hosting ${cid}`)
+        showLink(`https://dweb.link/ipfs/${cid}`)
+      }, false)
+
+       function showMessage (text) {
+        const node = document.createElement('div')
+        node.innerText = text
+        output.appendChild(node)
+      }
+
+      function showLink (url) {
+        const node = document.createElement('a')
+        node.href = url
+        node.innerText = `> 🔗 ${url}`
+        output.appendChild(node) 
+
+      }
+    </script>
+                </div>
+                <div class="col-md-4 d-none d-md-block order-1">
+                    <ul class="list">
+                        <li class="list-head">
+                            <h6>CONTACT INFO</h6>
+                        </li>
+                        <li class="list-body">
+                            <p class="py-2">Contact us and we'll get back to you within 24 hours.</p>
+                            <p class="py-2"><i class="ti-location-pin"></i> Cms College,Kottayam</p>
+                            <p class="py-2"><i class="ti-email"></i>  yakodeevs@gmail.com</p>
+                            <p class="py-2"><i class="ti-microphone"></i> +91 73060 96941 </p>
+
+                        </li>
+                    </ul> 
+                </div>
+            </div>
+
+            <footer class="footer mt-5 border-top">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-6 text-center text-md-left">
+                        <p class="mb-0">Copyright <script>document.write(new Date().getFullYear())</script> &copy; <a target="_blank" >Development Team </a></p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-right">
+                        <div class="social-links">
+                            <a href="javascript:void(0)" class="link"><i class="ti-facebook"></i></a>
+                            <a href="javascript:void(0)" class="link"><i class="ti-twitter-alt"></i></a>
+                            <a href="javascript:void(0)" class="link"><i class="ti-google"></i></a>
+                            <a href="javascript:void(0)" class="link"><i class="ti-pinterest-alt"></i></a>
+                            <a href="javascript:void(0)" class="link"><i class="ti-instagram"></i></a>
+                            <a href="javascript:void(0)" class="link"><i class="ti-rss"></i></a>
+                        </div>
+                    </div>
+                </div> 
+            </footer>
+        </div>
+    </section>
+	
+	<!-- core  -->
+    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+
+    <!-- bootstrap 3 affix -->
+	<script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+    
+    <!-- Owl carousel  -->
+    <script src="assets/vendors/owl-carousel/js/owl.carousel.js"></script>
+
+
+    <!-- Ollie js -->
+    <script src="assets/js/Ollie.js"></script>
+
+</body>
+</html>
